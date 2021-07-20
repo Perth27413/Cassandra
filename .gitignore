@@ -12,6 +12,9 @@
 /.next/
 /out/
 
+#Jetbrain
+/**/.idea/*
+
 # production
 /build
 
