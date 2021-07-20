@@ -7,7 +7,6 @@ export default function Home() {
     <div id="indexPage">
       <div className="home">
         <Card/>
-        <label id="welcomeText">Welcome To FindMyMate</label>
         <Charts/>
       </div>
     </div>
