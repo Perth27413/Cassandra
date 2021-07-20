@@ -32,7 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
-.idea/Cassandra.iml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/vcs.xml
-.idea/modules.xml
+
+# jetbrain
+.idea/*
