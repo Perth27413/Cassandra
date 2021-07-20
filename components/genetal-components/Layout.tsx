@@ -8,7 +8,8 @@ const Layout: React.FC = ({children}) => {
     <>
       <Head>
         <title>Carbon Footprint</title>
-        <meta property="og:title" content="FindMyMate" key="title" />
+        <meta property="og:title" content="Carbon Footprint" key="title" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
       </Head>
       <div id="layout">
         <Sidebar/>
