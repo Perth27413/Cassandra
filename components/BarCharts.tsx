@@ -80,7 +80,7 @@ class BarCharts extends React.PureComponent<IProps, IState> {
             height={250}
             data={this.state.data}
             margin={{
-              top: 5,
+              top: 10,
               right: 30,
               left: 20,
               bottom: 5

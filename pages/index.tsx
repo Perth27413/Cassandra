@@ -10,8 +10,10 @@ export default function Home() {
       <div className="home">
         <Card/>
         <LineCharts/>
-        <BarCharts/>
-        <RankCard/>
+        <div className="rank-graph">
+          <RankCard/>
+          <BarCharts/>
+        </div>
       </div>
     </div>
   )
