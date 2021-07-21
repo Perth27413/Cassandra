@@ -10,7 +10,7 @@ import {
   BarChart,
   Bar
 } from 'recharts';
-import '../components/Charts.scss'
+import '../components/LineCharts.scss'
 
 interface IProps {}
 
@@ -18,7 +18,7 @@ interface IState {
   data: Array<any>
 }
 
-class Charts extends React.PureComponent<IProps, IState> {
+class LineCharts extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     this.state = {
@@ -73,14 +73,14 @@ class Charts extends React.PureComponent<IProps, IState> {
 
   render(): JSX.Element {
     return (
-      <div id="charts">
+      <div id="lineChartsBox">
         <div id="lineCharts">
           <LineChart
-            width={1240}
+            width={1260}
             height={450}
             data={this.state.data}
             margin={{
-              top: 5,
+              top: 10,
               right: 30,
               left: 20,
               bottom: 5
@@ -90,7 +90,6 @@ class Charts extends React.PureComponent<IProps, IState> {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Legend />
             <Line
               type="monotone"
               dataKey="pv"
@@ -100,31 +99,9 @@ class Charts extends React.PureComponent<IProps, IState> {
             <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
           </LineChart> 
         </div>
-        <div id="barCharts">
-        <BarChart
-          width={600}
-          height={250}
-          data={this.state.data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
-        </BarChart> 
-        </div>
-
       </div>
     )
   }
 }
 
-export default Charts
+export default LineCharts

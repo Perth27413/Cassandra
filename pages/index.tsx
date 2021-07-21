@@ -1,14 +1,15 @@
 import '../styles/scss/style.scss'
 import Card from './../components/card-carbon/Card'
-import Charts from '../components/Charts'
+import LineCharts from '../components/LineCharts'
+import BarCharts from '../components/BarCharts'
 
 export default function Home() {
   return (
     <div id="indexPage">
       <div className="home">
         <Card/>
-        <label id="welcomeText">Welcome To FindMyMate</label>
-        <Charts/>
+        <LineCharts/>
+        <BarCharts/>
       </div>
     </div>
   )
