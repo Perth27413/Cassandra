@@ -1,4 +1,7 @@
 #indexPage {
-  height: 100%;
-  
+  display: flex;
+  justify-content: center;
+  #home {
+    height: 100%;
+  }
 }
