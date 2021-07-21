@@ -6,8 +6,8 @@
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 1100px;
-    height: 165px;
+    width: 1289px;
+    height: 175px;
     .card-item {
         display: block;
         box-sizing: border-box;
@@ -16,15 +16,63 @@
         border-radius: 10px;
         margin-left: 20px;
         margin-right: 20px;
-        padding: 5px;
+        padding: 18px;
 
-        transition: transform 600ms;
+        transition: 0.6s;
 
         &:hover {
+            cursor: pointer;
             background-color: #FFCF72;
             transform: scale(1.09);        
         }
-            
-    }
 
+        &:active {
+            transform: scale(0.97);
+        }
+        
+        .top {
+            height: 25%;
+            display: flex;
+            flex-direction: row;
+            padding: 0;
+            .con-topic {
+                width: 80%;
+                text-align: start;
+                font-size: 18px;
+                margin: 0;
+            }
+            .con-percent {
+                background-color: #B60101;
+                width: 20%;
+                height: 27px;
+                border-radius: 10px;
+                text-align: center;
+                padding-top: 4px;
+                margin: 0;
+            }
+        }
+        .mid {
+            height: 45%;
+            padding: 0;
+            .volume {
+                margin: 0;
+                text-align: center;
+                font-size: 60px;
+            }
+        }
+        .bottom {
+            height: 30%;
+            padding: 0;
+            .text-gram {
+               margin: 0;
+               font-size: 18px;
+               color: #B4B4B4;
+               padding-left: 61%;
+            }
+        }
+
+        &.active {
+            background-color: #FFCF72;
+        }
+    }
 }
