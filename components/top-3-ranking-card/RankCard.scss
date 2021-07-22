@@ -1,0 +1,82 @@
+#rankCard {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  height: 270px;
+  .rank-card-item {
+    display: block;
+    box-sizing: border-box;
+    width: 311px;
+    background-color: white;
+    border-radius: 10px;
+    margin-right: 20px;
+    padding: 18px;
+    transition: 0.6s;
+    .rank-top {
+      height: 25%;
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      .rank-topic {
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        margin: 0;
+      }
+    }
+    .list-info {
+      display: flex;
+      .profile {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        .picture-box {
+          width: 50px;
+          height: 50px;
+          border: solid 1px #0e0d0d;
+          border-radius: 50%;
+          margin-bottom: 10px;
+        }
+        .text-box {
+          display: flex;
+          flex-direction: column;
+          margin-left: 10px;
+          justify-content: center;
+          .name-box {
+
+          }
+          .position-box {
+            color: #c4c4c4;
+          }
+        }
+      }
+      .carbon {
+        display: flex;
+        align-items: center;
+        .carbon-box {
+          width: 84px;
+          height: 25px;
+          border-radius: 10px;
+          background-color: #B20101;
+          &.orange {
+            background-color: #EA7000;
+          }
+          &.yellow {
+            background-color: #FFB800;
+          }
+          &.darkgreen {
+            background-color: #2F8060;
+          }
+          &.green {
+            background-color: #67BE5A;
+          }
+          &.lightgreen {
+            background-color: #BBD565;
+          }
+        }
+      }
+    }
+  }
+}
