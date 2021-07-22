@@ -38,7 +38,7 @@ export default function Card(): JSX.Element {
 
   return (
     <div id='card'>
-
+      
       {cardList.map((item, index) => {
         return (
           <div key={index} className={`card-item ${index == number ? 'active' : ''}`} onClick={()=>active(index)}>

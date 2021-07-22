@@ -5,14 +5,27 @@ import './Sidebar.scss'
 interface IProps {}
 
 interface IState {
+  menu_list: Array<any>
 }
 
 class Sidebar extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     this.state = {
-    }
+      menu_list: [
+        {
+          title: "Dashboard",
+          path: "",
+          url: ""
+        },
+        {
+          title: "Test",
+          path: "",
+          url: ""
+        }
+      ]
   }
+}
 
   render(): JSX.Element {
     return (
@@ -27,14 +40,18 @@ class Sidebar extends React.PureComponent<IProps, IState> {
               Carbon Footprint
             </div>
           </div>
-          <div className="menu-list">
+          {this.state.menu_list.map((item, index) => {
+            return(
+          <div  className="menu-list">
             <div className="logo-menu">
               <em className="far fa-chart-bar"></em>
             </div>
             <div className="text-menu">
-              Dashboard
+              {item.title}
             </div>
           </div>
+            )
+          })}
         </div>
 
         <div className="side-bar-bottom">
@@ -51,6 +68,7 @@ class Sidebar extends React.PureComponent<IProps, IState> {
       </div>
     )
   }
+  
 }
 
 export default Sidebar
