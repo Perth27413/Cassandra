@@ -4,12 +4,12 @@ import './RankCard.scss'
 export default function Card(): JSX.Element {
 const [cardList, setCardList] = React.useState([
   {
-      topic: 'Most Carbon Used',
-      topList: ['perth', 'bio', 'jill']
+    topic: 'Most Carbon Used',
+    topList: ['perth', 'bio', 'jill']
   },
   {
-      topic: 'Least Carbon Used',
-      topList: ['uDome', 'uGo', 'bung']
+    topic: 'Least Carbon Used',
+    topList: ['uDome', 'uGo', 'bung']
   },
 ])
 
