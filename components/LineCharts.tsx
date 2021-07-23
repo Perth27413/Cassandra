@@ -70,7 +70,6 @@ class LineCharts extends React.PureComponent<IProps, IState> {
     
   }
 
-
   render(): JSX.Element {
     return (
       <div id="lineChartsBox">

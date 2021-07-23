@@ -70,7 +70,6 @@ class BarCharts extends React.PureComponent<IProps, IState> {
     
   }
 
-
   render(): JSX.Element {
     return (
       <div id="barChartsBox">

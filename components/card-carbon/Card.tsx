@@ -25,11 +25,11 @@ export default function Card(): JSX.Element {
   ])
 
   const active = (numCurrent: number) => {
-    if (numCurrent == 0) {
+    if (numCurrent === 0) {
       setNumber(0)
-    } else if (numCurrent == 1) {
+    } else if (numCurrent === 1) {
       setNumber(1)
-    } else if (numCurrent == 2) {
+    } else if (numCurrent === 2) {
       setNumber(2)
     } else {
       setNumber(0)
@@ -38,10 +38,9 @@ export default function Card(): JSX.Element {
 
   return (
     <div id='card'>
-      
-      {cardList.map((item, index) => {
+      {cardList.map((item, index: number) => {
         return (
-          <div key={index} className={`card-item ${index == number ? 'active' : ''}`} onClick={()=>active(index)}>
+          <div key={index} className={`card-item ${index === number ? 'active' : ''}`} onClick={() => active(index)}>
             <div className='top'>
               <div className='con-topic'>
                 <label className='text-topic'>{item.topic}</label>
