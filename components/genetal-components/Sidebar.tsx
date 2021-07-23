@@ -42,7 +42,7 @@ class Sidebar extends React.PureComponent<IProps, IState> {
           </div>
           {this.state.menu_list.map((item, index) => {
             return(
-          <div  className="menu-list">
+          <div key={index} className="menu-list">
             <div className="logo-menu">
               <em className="far fa-chart-bar"></em>
             </div>
