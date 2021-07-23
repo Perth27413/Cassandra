@@ -20,7 +20,7 @@ export default function Card(): JSX.Element {
       topic: 'Average Carbon/Distance',
       persent: '+3%',
       volume: '59',
-      gram: 'gram'
+      gram: 'gram/km'
     },
   ])
 

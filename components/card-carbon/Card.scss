@@ -49,6 +49,7 @@
                 text-align: center;
                 padding-top: 4px;
                 margin: 0;
+                color: #ffffff;
             }
         }
         .mid {
@@ -73,6 +74,9 @@
 
         &.active {
             background-color: #FFCF72;
+            .text-gram {
+                color: black;
+            }
         }
     }
 }
