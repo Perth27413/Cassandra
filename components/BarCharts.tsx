@@ -85,7 +85,7 @@ class BarCharts extends React.PureComponent<IProps, IState> {
     let newHeight: number = 0
     if (width >= 1050 && width <= 1680) {
       newWidth = 500
-      newHeight = 200
+      newHeight = 250
     } else {
       newWidth = 600
       newHeight = 250
