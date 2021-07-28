@@ -54,7 +54,7 @@
                 display: flex;
                 align-items: center;
             }
-            &:hover{
+            &:hover, &.active {
                 background-color:#4dad77;
                 cursor: pointer;
             }
