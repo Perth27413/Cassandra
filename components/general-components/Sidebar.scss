@@ -8,6 +8,9 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    @media (min-width: 1050px) and (max-width: 1680px) {
+        width: 250px;
+    }
     .side-bar-top {
         .banner {
             border-radius: 10px;

@@ -15,13 +15,17 @@ import '../components/LineCharts.scss'
 interface IProps {}
 
 interface IState {
-  data: Array<any>
+  data: Array<any>,
+  graphWidth: number,
+  graphHeight: number
 }
 
 class LineCharts extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     this.state = {
+      graphWidth: 1260,
+      graphHeight: 450,
       data: [
         {
           name: "Page A",
@@ -67,7 +71,32 @@ class LineCharts extends React.PureComponent<IProps, IState> {
         }
       ]
     }
-    
+  }
+
+  public componentDidMount(): void {
+    this.calculateWidthAndHeight()
+    window.addEventListener('resize', this.calculateWidthAndHeight);
+  }
+
+  public componentWillUnmount(): void {
+    window.removeEventListener('resize', this.calculateWidthAndHeight);
+  }
+
+  public calculateWidthAndHeight = (): void => {
+    let width: number = window.screen.width
+    let newWidth: number = 0
+    let newHeight: number = 0
+    if (width >= 1050 && width <= 1680) {
+      newWidth = 1160
+      newHeight = 400
+    } else {
+      newWidth = 1260
+      newHeight = 450
+    }
+    this.setState({
+      graphWidth: newWidth,
+      graphHeight: newHeight
+    })
   }
 
   render(): JSX.Element {
@@ -75,8 +104,8 @@ class LineCharts extends React.PureComponent<IProps, IState> {
       <div id="lineChartsBox">
         <div id="lineCharts">
           <LineChart
-            width={1260}
-            height={450}
+            width={this.state.graphWidth}
+            height={this.state.graphHeight}
             data={this.state.data}
             margin={{
               top: 10,
