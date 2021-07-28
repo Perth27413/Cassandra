@@ -87,7 +87,7 @@ class LineCharts extends React.PureComponent<IProps, IState> {
     let newWidth: number = 0
     let newHeight: number = 0
     if (width >= 1050 && width <= 1680) {
-      newWidth = 1160
+      newWidth = 1130
       newHeight = 400
     } else {
       newWidth = 1260
