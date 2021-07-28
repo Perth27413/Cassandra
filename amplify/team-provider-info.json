@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cassandra-dev-153959-authRole",
+      "UnauthRoleArn": "arn:aws:iam::570881137276:role/amplify-cassandra-dev-153959-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::570881137276:role/amplify-cassandra-dev-153959-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-cassandra-dev-153959-deployment",
+      "UnauthRoleName": "amplify-cassandra-dev-153959-unauthRole",
+      "StackName": "amplify-cassandra-dev-153959",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:570881137276:stack/amplify-cassandra-dev-153959/68182530-ef7f-11eb-86a6-02396c196af8",
+      "AmplifyAppId": "d23ca176zdfrdd"
+    }
+  }
+}
