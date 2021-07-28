@@ -4,5 +4,8 @@
     background-color: #ffffff;
     padding: 10px 10px 10px 0px;
     border-radius: 10px;
+    @media (min-width: 1050px) and (max-width: 1680px) {
+      width: 500px;
+    }
   }
 }

@@ -1,12 +1,9 @@
 import React from 'react'
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   BarChart,
   Bar
 } from 'recharts';
@@ -15,13 +12,17 @@ import '../components/BarCharts.scss'
 interface IProps {}
 
 interface IState {
-  data: Array<any>
+  data: Array<any>,
+  graphWidth: number,
+  graphHeight: number
 }
 
 class BarCharts extends React.PureComponent<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     this.state = {
+      graphWidth: 600,
+      graphHeight: 250,
       data: [
         {
           name: "Page A",
@@ -67,7 +68,32 @@ class BarCharts extends React.PureComponent<IProps, IState> {
         }
       ]
     }
-    
+  }
+
+  public componentDidMount(): void {
+    this.calculateWidthAndHeight()
+    window.addEventListener('resize', this.calculateWidthAndHeight);
+  }
+
+  public componentWillUnmount(): void {
+    window.removeEventListener('resize', this.calculateWidthAndHeight);
+  }
+
+  public calculateWidthAndHeight = (): void => {
+    let width: number = window.screen.width
+    let newWidth: number = 0
+    let newHeight: number = 0
+    if (width >= 1050 && width <= 1680) {
+      newWidth = 500
+      newHeight = 200
+    } else {
+      newWidth = 600
+      newHeight = 250
+    }
+    this.setState({
+      graphWidth: newWidth,
+      graphHeight: newHeight
+    })
   }
 
   render(): JSX.Element {
@@ -75,8 +101,8 @@ class BarCharts extends React.PureComponent<IProps, IState> {
       <div id="barChartsBox">
         <div id="barCharts">
           <BarChart
-            width={600}
-            height={250}
+            width={this.state.graphWidth}
+            height={this.state.graphHeight}
             data={this.state.data}
             margin={{
               top: 10,
