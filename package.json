@@ -12,6 +12,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.21.1",
     "chalk": "^4.1.1",
     "date-fns": "^2.22.1",
     "express": "^4.17.1",

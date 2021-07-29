@@ -1,4 +1,5 @@
 import React from 'react'
+import Axios from 'axios'
 import {
   LineChart,
   Line,
@@ -11,6 +12,8 @@ import {
   Bar
 } from 'recharts';
 import '../components/LineCharts.scss'
+import PerhourModel from '../model/carbon/PerhourModel'
+import graphModel from '../model/graph/graphModel'
 
 interface IProps {}
 
@@ -28,58 +31,52 @@ class LineCharts extends React.PureComponent<IProps, IState> {
       graphHeight: 450,
       data: [
         {
-          name: "Page A",
-          uv: 4000,
-          pv: 2400,
-          amt: 2400
+          name: "2021-07-29T16:00:00",
+          carbon: 500
         },
         {
-          name: "Page B",
-          uv: 3000,
-          pv: 1398,
-          amt: 2210
+          name: "2021-07-29T14:00:00",
+          carbon: 600
         },
         {
-          name: "Page C",
-          uv: 2000,
-          pv: 9800,
-          amt: 2290
+          name: "2021-07-29T13:00:00",
+          carbon: 400
         },
         {
-          name: "Page D",
-          uv: 2780,
-          pv: 3908,
-          amt: 2000
-        },
-        {
-          name: "Page E",
-          uv: 1890,
-          pv: 4800,
-          amt: 2181
-        },
-        {
-          name: "Page F",
-          uv: 2390,
-          pv: 3800,
-          amt: 2500
-        },
-        {
-          name: "Page G",
-          uv: 3490,
-          pv: 4300,
-          amt: 2100
+          name: "2021-07-29T12:00:00",
+          carbon: 100
         }
       ]
     }
   }
 
   public componentDidMount(): void {
+    this.fetchData()
     this.calculateWidthAndHeight()
     window.addEventListener('resize', this.calculateWidthAndHeight);
   }
 
   public componentWillUnmount(): void {
     window.removeEventListener('resize', this.calculateWidthAndHeight);
+  }
+
+  private async fetchData(): Promise<void> {
+    const response = await Axios.get('https://fsk328moy9.execute-api.ap-southeast-1.amazonaws.com/dev//carbon/perhour/')
+    let data: Array<PerhourModel> = response.data
+    this.mapDataToGraph(data)
+  }
+
+  private mapDataToGraph(data: Array<PerhourModel>): void {
+    let result: Array<graphModel> = []
+    data.forEach((item: PerhourModel) => {
+      let graphData: graphModel = new graphModel
+      graphData.name = item.dateTime.split('T')[1].split(':').slice(0, 2).join(':')
+      graphData.carbon = item.carbon
+      result.push(graphData)
+    })
+    this.setState({
+      data: result
+    })
   }
 
   public calculateWidthAndHeight = (): void => {
@@ -124,7 +121,7 @@ class LineCharts extends React.PureComponent<IProps, IState> {
               stroke="#8884d8"
               activeDot={{ r: 8 }}
             />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+            <Line type="monotone" dataKey="carbon" stroke="#82ca9d" />
           </LineChart> 
         </div>
       </div>
