@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div id="indexPage">
       <div className="home">
-        <Card fetchToday={value => lineRef.current.fetchData()}/>
+        <Card sendData={(value, value2) => lineRef.current.setData(value, value2)}/>
         <LineCharts ref={lineRef}/>
         <div className="rank-graph">
           <RankCard/>

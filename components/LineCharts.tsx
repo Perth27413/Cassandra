@@ -6,15 +6,13 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend,
-  BarChart,
-  Bar
+  Tooltip
 } from 'recharts';
 import '../components/LineCharts.scss'
 import PerhourModel from '../model/carbon/PerhourModel'
 import graphModel from '../model/graph/graphModel'
 import Loading from '../components/general-components/Loading'
+import GetDataAPI from './function/getDataAPI'
 
 interface IProps {}
 
@@ -36,8 +34,8 @@ class LineCharts extends React.PureComponent<IProps, IState> {
     }
   }
 
-  public componentDidMount(): void {
-    this.fetchData()
+  public async componentDidMount(): Promise<void> {
+    this.mapDataToGraph(await new GetDataAPI().fetchDataPerHour(), 'hour')
     this.calculateWidthAndHeight()
     window.addEventListener('resize', this.calculateWidthAndHeight);
   }
@@ -46,28 +44,28 @@ class LineCharts extends React.PureComponent<IProps, IState> {
     window.removeEventListener('resize', this.calculateWidthAndHeight);
   }
 
-  public async fetchData(): Promise<void> {
-    this.setState({
-      data: [],
-      isLoading: true
-    })
-    const response = await Axios.get('https://fsk328moy9.execute-api.ap-southeast-1.amazonaws.com/dev//carbon/perhour/')
-    let data: Array<PerhourModel> = response.data
-    this.mapDataToGraph(data)
+  public setData = (value: Array<PerhourModel>, type: string): void => {
+    this.setState({isLoading: true})
+    this.mapDataToGraph(value, type)
+    setTimeout(() => {
+      this.setState({isLoading: false})
+    }, 1800)
   }
 
-  private mapDataToGraph(data: Array<PerhourModel>): void {
+  private mapDataToGraph(data: Array<PerhourModel>, type: string): void {
     let result: Array<graphModel> = []
     data.forEach((item: PerhourModel) => {
       let graphData: graphModel = new graphModel
-      graphData.name = item.dateTime.split('T')[1].split(':').slice(0, 2).join(':')
+      graphData.name = type === 'hour' ? item.dateTime.slice(11, 19) : item.dateTime.slice(0, 10)
       graphData.carbon = item.carbon
       result.push(graphData)
     })
-    this.setState({
-      data: result,
-      isLoading: false
-    })
+    setTimeout(() => {
+      this.setState({
+        data: result,
+        isLoading: false
+      })
+    }, 1500)
   }
 
   public calculateWidthAndHeight = (): void => {
