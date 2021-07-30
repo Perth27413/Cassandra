@@ -199,10 +199,10 @@ export default function Card({ sendData }): JSX.Element {
                   </div>
                 </div>
                 <div className='mid'>
-                  <p className='volume'>{item.volume}</p>
-                </div>
-                <div className='bottom'>
-                  <label className='text-gram'>{item.gram}</label>
+                  <div className='volume'>
+                    <div className="volume-text">{item.volume}</div>
+                    <div className="text-gram-box"><label className='text-gram'>{item.gram}</label></div>
+                  </div>
                 </div>
               </div>
             :
