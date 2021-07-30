@@ -1,11 +1,33 @@
-#barChartsBox {
-  #barCharts {
-    width: 600px;
-    background-color: #ffffff;
-    padding: 10px 10px 10px 0px;
+#earnBox {
+  width: 600px;
+  height: 270px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 1050px) and (max-width: 1680px) {
+    width: 500px;
+  }
+  #avgCarbon, #totalEarn {
+    background-color: #fff;
+    height: 48%;
     border-radius: 10px;
-    @media (min-width: 1050px) and (max-width: 1680px) {
-      width: 500px;
+    // padding: 20px;
+    display: flex;
+    .bgLeft {
+      border-radius: 10px 0 0 10px;
+      width: 30%;
+      background-color: orange;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 23px;
+      color: #fff;
+      font-weight: bold;
+    }
+    .bgRight {
+      padding: 20px;
     }
   }
 }

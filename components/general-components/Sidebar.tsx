@@ -18,12 +18,6 @@ class Sidebar extends React.PureComponent<IProps, IState> {
           path: "",
           url: "",
           active: true
-        },
-        {
-          title: "Test",
-          path: "",
-          url: "",
-          active: false
         }
       ]
     }
