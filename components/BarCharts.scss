@@ -16,7 +16,7 @@
     display: flex;
     .bgLeft {
       border-radius: 10px 0 0 10px;
-      width: 30%;
+      width: 40%;
       background-color: orange;
       display: flex;
       justify-content: center;
@@ -27,6 +27,21 @@
     }
     .bgRight {
       padding: 20px;
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 23px;
+      flex-direction: column;
+      .text-volume {
+        font-size: 55px;
+        text-align: center;
+      }
+      .text-unit {
+        font-size: 18px;
+        color: #B4B4B4;
+        margin-left: 150px;
+      }
     }
   }
 }
