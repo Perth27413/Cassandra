@@ -74,7 +74,13 @@
         color: #B4B4B4;
         padding-left: 61%;
         cursor: pointer;
+      }
     }
+    .loading-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
     }
     &.active {
       background-color: #FFCF72;

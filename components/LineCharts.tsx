@@ -14,13 +14,15 @@ import {
 import '../components/LineCharts.scss'
 import PerhourModel from '../model/carbon/PerhourModel'
 import graphModel from '../model/graph/graphModel'
+import Loading from '../components/general-components/Loading'
 
 interface IProps {}
 
 interface IState {
   data: Array<any>,
   graphWidth: number,
-  graphHeight: number
+  graphHeight: number,
+  isLoading: boolean
 }
 
 class LineCharts extends React.PureComponent<IProps, IState> {
@@ -29,24 +31,8 @@ class LineCharts extends React.PureComponent<IProps, IState> {
     this.state = {
       graphWidth: 1260,
       graphHeight: 450,
-      data: [
-        {
-          name: "2021-07-29T16:00:00",
-          carbon: 500
-        },
-        {
-          name: "2021-07-29T14:00:00",
-          carbon: 600
-        },
-        {
-          name: "2021-07-29T13:00:00",
-          carbon: 400
-        },
-        {
-          name: "2021-07-29T12:00:00",
-          carbon: 100
-        }
-      ]
+      isLoading: true,
+      data: []
     }
   }
 
@@ -60,7 +46,11 @@ class LineCharts extends React.PureComponent<IProps, IState> {
     window.removeEventListener('resize', this.calculateWidthAndHeight);
   }
 
-  private async fetchData(): Promise<void> {
+  public async fetchData(): Promise<void> {
+    this.setState({
+      data: [],
+      isLoading: true
+    })
     const response = await Axios.get('https://fsk328moy9.execute-api.ap-southeast-1.amazonaws.com/dev//carbon/perhour/')
     let data: Array<PerhourModel> = response.data
     this.mapDataToGraph(data)
@@ -75,7 +65,8 @@ class LineCharts extends React.PureComponent<IProps, IState> {
       result.push(graphData)
     })
     this.setState({
-      data: result
+      data: result,
+      isLoading: false
     })
   }
 
@@ -100,6 +91,11 @@ class LineCharts extends React.PureComponent<IProps, IState> {
     return (
       <div id="lineChartsBox">
         <div id="lineCharts">
+          {this.state.isLoading ?
+          <div className="graph-loading">
+            <Loading/>
+          </div>
+          :
           <LineChart
             width={this.state.graphWidth}
             height={this.state.graphHeight}
@@ -122,7 +118,9 @@ class LineCharts extends React.PureComponent<IProps, IState> {
               activeDot={{ r: 8 }}
             />
             <Line type="monotone" dataKey="carbon" stroke="#82ca9d" />
-          </LineChart> 
+          </LineChart>
+          }
+          
         </div>
       </div>
     )
