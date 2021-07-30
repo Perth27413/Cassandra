@@ -33,7 +33,7 @@ class Sidebar extends React.PureComponent<IProps, IState> {
               <em className="fas fa-copyright"></em>
             </div>
             <div className="text-banner">
-              Carbon Footprint
+              Cassandra
             </div>
           </div>
           {this.state.menu_list.map((item, index) => {

@@ -19,7 +19,7 @@ class BarCharts extends React.PureComponent<IProps, IState> {
       <div id="earnBox">
         <div id="avgCarbon">
           <div className="bgLeft">
-            Carbon per km
+            Avg Carbon
           </div>
           <div className="bgRight">
             right
@@ -27,7 +27,7 @@ class BarCharts extends React.PureComponent<IProps, IState> {
         </div>
         <div id="totalEarn">
           <div className="bgLeft">
-            Total earn
+            Total Payment
           </div>
           <div className="bgRight">
             right
