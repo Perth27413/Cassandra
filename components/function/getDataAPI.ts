@@ -32,6 +32,26 @@ class GetDataAPI {
       console.error(error)
     }
   }
+
+  public async fetchDataAVGCarbon(): Promise<number> {
+    try {
+      const response = await Axios.get(`https://fsk328moy9.execute-api.ap-southeast-1.amazonaws.com/dev/carbon/avg`)
+      let data: number = response.data
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  public async fetchDataTotalPayment(): Promise<number> {
+    try {
+      const response = await Axios.get(`https://fsk328moy9.execute-api.ap-southeast-1.amazonaws.com/dev/user/earn`)
+      let data: number = response.data
+      return data
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
 
 export default GetDataAPI
