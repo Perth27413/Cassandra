@@ -59,6 +59,11 @@
           width: 84px;
           height: 25px;
           border-radius: 10px;
+          color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 15px;
           background-color: #B20101;
           &.orange {
             background-color: #EA7000;
