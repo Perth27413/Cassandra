@@ -14,21 +14,21 @@ export default function Card({ sendData }): JSX.Element {
   const [getDataApi, setgetDataApi] = React.useState(new GetDataAPI)
   const [cardList, setCardList] = React.useState([
     {
-      topic: 'Today Carbon',
+      topic: 'Today CO',
       persent: '+3%',
       volume: '-',
       gram: 'kg',
       isLoad: true
     },
     {
-      topic: 'Weekly Carbon',
+      topic: 'Weekly CO',
       persent: '+3%',
       volume: '-',
       gram: 'kg',
       isLoad: true
     },
     {
-      topic: 'Average Carbon/Distance',
+      topic: 'Monthly CO',
       persent: '+3%',
       volume: '-',
       gram: 'kg',
@@ -49,21 +49,21 @@ export default function Card({ sendData }): JSX.Element {
     let lastMonthCarbon: number = await fetchLastMonthCarbon()
     setCardList([
       {
-        topic: 'Today Carbon',
+        topic: 'Today CO',
         persent: `${diffPercent(todayCarbon, yesterdayCarbon)}`,
         volume: todayCarbon.toFixed(2),
         gram: 'kg',
         isLoad: false
     },
       {
-        topic: 'Weekly Carbon',
+        topic: 'Weekly CO',
         persent:  `${diffPercent(weeklyCarbon, lastweekCarbon)}`,
         volume: weeklyCarbon.toFixed(2),
         gram: 'kg',
       isLoad: false
     },
       {
-        topic: 'Monthly Carbon',
+        topic: 'Monthly CO',
         persent:  `${diffPercent(monthlyCarbon, lastMonthCarbon)}`,
         volume: monthlyCarbon.toFixed(2),
         gram: 'kg',
@@ -192,7 +192,7 @@ export default function Card({ sendData }): JSX.Element {
               <div>
                 <div className='top'>
                   <div className='con-topic'>
-                    <label className='text-topic'>{item.topic}</label>
+                    <label className='text-topic'>{item.topic}&#8322;</label>
                   </div>
                   <div className='con-percent'style={{backgroundColor: `${Number(item.persent) > 0 ? "#B60101" : "#2F8060"}`}}>
                     <label className='percent'>{item.persent}%</label>

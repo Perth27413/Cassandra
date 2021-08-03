@@ -7,7 +7,7 @@ const Layout: React.FC = ({children}) => {
   return (
     <>
       <Head>
-        <title>Carbon Footprint</title>
+        <title>Cassandra</title>
         <meta property="og:title" content="Carbon Footprint" key="title" />
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
       </Head>
