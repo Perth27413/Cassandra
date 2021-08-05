@@ -60,7 +60,7 @@ class BarCharts extends React.PureComponent<IProps, IState> {
           :
             <div className='bgRight'>
               <label className='text-volume'>{this.state.avgCarbon.toFixed(2)}</label>
-              <label className='text-unit'>kg/km</label>
+              <label className='text-unit'>g/km</label>
             </div>
           }
         </div>
