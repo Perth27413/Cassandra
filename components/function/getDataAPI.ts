@@ -3,9 +3,9 @@ import PerhourModel from '../../model/carbon/PerhourModel'
 import UserModel from '../../model/user/userModel'
 
 class GetDataAPI {
-  public async fetchDataPerHour(): Promise<Array<PerhourModel>> {
+  public async fetchDataPerHour(dateTime: string): Promise<Array<PerhourModel>> {
     try {
-      const response = await Axios.get('https://fsk328moy9.execute-api.ap-southeast-1.amazonaws.com/dev//carbon/perhour/')
+      const response = await Axios.get(`https://fsk328moy9.execute-api.ap-southeast-1.amazonaws.com/dev/carbon/perhourfromday?dateTime=${dateTime}`)
       let data: Array<PerhourModel> = response.data
       return data
     } catch (error) {
