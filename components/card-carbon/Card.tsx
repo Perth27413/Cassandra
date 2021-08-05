@@ -77,13 +77,15 @@ export default function Card({ sendData }): JSX.Element {
   }
 
   const fetchTodayCarbon = async() => {
-    let response: Array<PerhourModel> = await getDataApi.fetchDataPerHour()
+    let today: string = getDateAndFormat(0)
+    let response: Array<PerhourModel> = await getDataApi.fetchDataPerHour(today)
     setperHourData(response)
     return (response.map(item => item.carbon).reduce((sum, a) => sum + a, 0)/1000)
   }
   
   const fetchWeeklyCarbon = async() => {
-    let today: string = getDateAndFormat(0)
+    // let today: string = getDateAndFormat(0)
+    let today: string = new Date().toISOString()
     let weekly: string = getDateAndFormat(new Date().getUTCDay() * -1)
     const response: Array<PerhourModel> = await getDataApi.fetchDataFromDate(weekly, today)
     setweeklyData(response)
@@ -91,7 +93,7 @@ export default function Card({ sendData }): JSX.Element {
   }
 
   const fetchMonthlyCarbon = async() => {
-    let today: string = getDateAndFormat(0)
+    let today: string = new Date().toISOString()
     let weekly: string = getDateAndFormat(new Date().getUTCDate() * -1)
     const response: Array<PerhourModel> = await getDataApi.fetchDataFromDate(weekly, today)
     setmonthlyData(response)
@@ -99,7 +101,7 @@ export default function Card({ sendData }): JSX.Element {
   }
 
   const fetchYesterdayCarbon = async() => {
-    let today: string = getDateAndFormat(0)
+    let today: string = new Date().toISOString()
     let weekly: string = getDateAndFormat(-1)
     const response: Array<PerhourModel> = await getDataApi.fetchDataFromDate(weekly, today)
     return (response.map(item => item.carbon).reduce((sum, a) => sum + a, 0)/1000)
@@ -108,8 +110,8 @@ export default function Card({ sendData }): JSX.Element {
 
   const fetchLastWeekCarbon = async() => {
     let today: Date = new Date()
-    let start: string = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate()-12))
-    let end: string = formatDate(new Date(today.getFullYear(), today.getMonth(), today.getDate()-7))
+    let start: string = formatDate(new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()-12))
+    let end: string = formatDate(new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()-7))
     const response: Array<PerhourModel> = await getDataApi.fetchDataFromDate(start, end)
     return (response.map(item => item.carbon).reduce((sum, a) => sum + a, 0)/1000)
   }
@@ -120,11 +122,6 @@ export default function Card({ sendData }): JSX.Element {
     let end: string = formatDate(new Date(date.getUTCFullYear(), date.getUTCMonth(), 1))
     const response: Array<PerhourModel> = await getDataApi.fetchDataFromDate(start, end)
     return (response.map(item => item.carbon).reduce((sum, a) => sum + a, 0)/1000)
-  }
-
-  const fetchAverageCarbon = async() => {
-    const response = await Axios.get(`https://fsk328moy9.execute-api.ap-southeast-1.amazonaws.com/dev/carbon/avg/`)
-    return response.data.toFixed(2)
   }
 
   const getDateAndFormat = (dateNumber: number) => {

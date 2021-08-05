@@ -35,9 +35,19 @@ class LineCharts extends React.PureComponent<IProps, IState> {
   }
 
   public async componentDidMount(): Promise<void> {
-    this.mapDataToGraph(await new GetDataAPI().fetchDataPerHour(), 'hour')
+    let today: string = this.getDateAndFormat(0)
+    this.mapDataToGraph(await new GetDataAPI().fetchDataPerHour(today), 'hour')
     this.calculateWidthAndHeight()
     window.addEventListener('resize', this.calculateWidthAndHeight);
+  }
+
+  public getDateAndFormat = (dateNumber: number) => {
+    let date: Date = new Date()
+    date.setDate(date.getDate() + dateNumber)
+    let dd = String(date.getUTCDate()).padStart(2, '0')
+    let mm = String(date.getUTCMonth() + 1).padStart(2, '0')
+    var yyyy = date.getFullYear()
+    return yyyy + '-' + mm + '-' + dd
   }
 
   public componentWillUnmount(): void {
@@ -56,7 +66,8 @@ class LineCharts extends React.PureComponent<IProps, IState> {
     let result: Array<graphModel> = []
     data.forEach((item: PerhourModel) => {
       let graphData: graphModel = new graphModel
-      graphData.name = type === 'hour' ? item.dateTime.slice(11, 19) : item.dateTime.slice(0, 10)
+      // graphData.name = type === 'hour' ? item.dateTime.slice(11, 19) : item.dateTime.slice(0, 10)
+      graphData.name = type === 'hour' ? item.dateTime : item.dateTime.slice(0, 10)
       graphData.carbon = item.carbon
       result.push(graphData)
     })
