@@ -75,7 +75,7 @@ class BarCharts extends React.PureComponent<IProps, IState> {
           :
           <div className='bgRight'>
             <label className='text-volume'>{(this.state.totalPayment / 30).toFixed(2)}</label>
-            <label className='text-unit'>Dallars</label>
+            <label className='text-unit'>Dollars</label>
           </div>
           }
         </div>

@@ -68,7 +68,7 @@ class LineCharts extends React.PureComponent<IProps, IState> {
       let graphData: graphModel = new graphModel
       // graphData.name = type === 'hour' ? item.dateTime.slice(11, 19) : item.dateTime.slice(0, 10)
       graphData.name = type === 'hour' ? item.dateTime : item.dateTime.slice(0, 10)
-      graphData.carbon = item.carbon
+      graphData.carbon = Number(item.carbon.toFixed(2))
       result.push(graphData)
     })
     setTimeout(() => {
