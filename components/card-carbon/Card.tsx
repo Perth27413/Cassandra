@@ -94,8 +94,8 @@ export default function Card({ sendData }): JSX.Element {
 
   const fetchMonthlyCarbon = async() => {
     let today: string = new Date().toISOString()
-    let weekly: string = getDateAndFormat(new Date().getUTCDate() * -1)
-    const response: Array<PerhourModel> = await getDataApi.fetchDataFromDate(weekly, today)
+    let monthly: string = getDateAndFormat((new Date().getUTCDate() - 1) * -1)
+    const response: Array<PerhourModel> = await getDataApi.fetchDataFromDate(monthly, today)
     setmonthlyData(response)
     return (response.map(item => item.carbon).reduce((sum, a) => sum + a, 0)/1000)
   }
@@ -126,7 +126,7 @@ export default function Card({ sendData }): JSX.Element {
 
   const getDateAndFormat = (dateNumber: number) => {
     let date: Date = new Date()
-    date.setDate(date.getDate() + dateNumber)
+    date.setDate(date.getUTCDate() + dateNumber)
     let dd = String(date.getUTCDate()).padStart(2, '0')
     let mm = String(date.getUTCMonth() + 1).padStart(2, '0')
     var yyyy = date.getFullYear()
