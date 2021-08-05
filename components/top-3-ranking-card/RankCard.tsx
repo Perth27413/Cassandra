@@ -83,7 +83,7 @@ class RankCard extends React.PureComponent<IProps, IState> {
                         <div className={`carbon-box
                                 ${index === 0 ? num === 1 ? 'orange' : num === 2 ? 'yellow' : '' : num === 0 ? 'darkgreen' : num === 1 ? 'green' : 'lightgreen'}
                               `}>
-                          {value.carbon.toFixed(2)}
+                          {(value.carbon/1000).toFixed(2)}
                         </div>
                       </div>
                     </div>
