@@ -151,6 +151,12 @@ export default function Card({ sendData }): JSX.Element {
       setLoading(index, false)
     }, 800)
   }
+
+  const setSumData = (index, value) => {
+    let newState = [...cardList]
+    newState[index].volume = (value.map(item => item.carbon).reduce((sum, a) => sum + a, 0)/1000).toFixed(2)
+    setCardList(newState)
+  }
   
   const active = async(numCurrent: number) => {
     switch (numCurrent) {
@@ -159,6 +165,7 @@ export default function Card({ sendData }): JSX.Element {
         setLoading(0, true)
         await fetchTodayCarbon()
         sendData(perHourData, 'hour')
+        setSumData(0, perHourData)
         fakeLoading(0)
         break
       case 1:
@@ -166,6 +173,7 @@ export default function Card({ sendData }): JSX.Element {
         setLoading(1, true)
         await fetchWeeklyCarbon()
         sendData(weeklyData, 'day')
+        setSumData(1, weeklyData)
         fakeLoading(1)
         break
       case 2:
@@ -173,6 +181,7 @@ export default function Card({ sendData }): JSX.Element {
         setLoading(2, true)
         await fetchMonthlyCarbon()
         sendData(monthlyData, 'day')
+        setSumData(2, monthlyData)
         fakeLoading(2)
         break
       default:
