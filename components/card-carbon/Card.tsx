@@ -192,7 +192,7 @@ export default function Card({ sendData }): JSX.Element {
                     <label className='text-topic'>{item.topic}&#8322;</label>
                   </div>
                   <div className='con-percent'style={{backgroundColor: `${Number(item.persent) > 0 ? "#B60101" : "#2F8060"}`}}>
-                    <label className='percent'>{item.persent}%</label>
+                    <label className='percent'>{Number(item.persent) > 0 ? '+' + item.persent : item.persent}%</label>
                   </div>
                 </div>
                 <div className='mid'>
